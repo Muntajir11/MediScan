@@ -1,5 +1,5 @@
 import express from 'express';
-import { analyzeSymptoms } from '../services/gemini.js';
+import { analyzeSymptoms } from '../services/groq.js';
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/analyze-symptoms', async (req, res) => {
       return res.status(400).json({ error: 'Please provide symptoms' });
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     
     if (!apiKey) {
       return res.status(500).json({ error: 'API key not configured' });
